@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  nginx:
+    image: nginx:1.13.6
+    restart: always
+    volumes:
+      - ./codebase/pickem/:/var/www/html/watchpoint-io
+      - ./docker/nginx/watchpoint.conf:/etc/nginx/conf.d/watchpoint.conf
+    ports:
+      - 80
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    restart: always
+    volumes:
+      - ./codebase/pickem/:/var/www/html/watchpoint-io
+    ports:
+      - 9000
