@@ -8,14 +8,14 @@ COMPOSE_FILES=()
 case "$1" in
     pier)
         COMPOSE_FILES=(
-            docker-compose.prod.yml
+            docker-compose.web.yml
             docker-compose.pier.yml
         )
         ;;
 
     docker-dev|docker-prod)
         COMPOSE_FILES=(
-            docker-compose.prod.yml
+            docker-compose.web.yml
         )
         ;;
 
