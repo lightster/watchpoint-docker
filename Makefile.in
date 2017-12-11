@@ -1,4 +1,6 @@
 install: codebase/pickem build-compose-file
+	cd codebase/pickem && git pull
+	docker-compose build
 	docker-compose up -d
 	docker-compose run --rm php-fpm composer install
 
