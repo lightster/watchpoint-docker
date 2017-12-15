@@ -1,11 +1,14 @@
-install: codebase/pickem build-compose-file
-	cd codebase/pickem && git pull
+install: codebase/pickem codebase-update build-compose-file
+	ln -sfn pickem codebase/current
 	docker-compose build
 	docker-compose up -d
-	docker-compose run --rm php-fpm composer install
+	docker-compose run --rm -w /opt/pickem-releases/current php-fpm composer install
 
 codebase/pickem:
 	git clone git@github.com:lightster/watchpoint-pickem.git codebase/pickem
+
+codebase-update:
+	cd codebase/pickem && git pull
 
 build-compose-file:
 	cp -a docker/docker-compose.*.yml .

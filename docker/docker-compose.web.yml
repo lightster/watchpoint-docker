@@ -4,7 +4,7 @@ services:
     image: nginx:1.13.6-alpine
     restart: always
     volumes:
-      - ./codebase/pickem/:/var/www/html/watchpoint-io
+      - ./codebase:/opt/pickem-releases
       - ./docker/nginx/watchpoint.conf:/etc/nginx/conf.d/watchpoint.conf
     ports:
       - 80
@@ -17,6 +17,6 @@ services:
       dockerfile: docker/php/Dockerfile
     restart: always
     volumes:
-      - ./codebase/pickem/:/var/www/html/watchpoint-io
+      - ./codebase:/opt/pickem-releases
     ports:
       - 9000

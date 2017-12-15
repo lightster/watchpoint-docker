@@ -19,4 +19,4 @@ RUN curl -sS https://getcomposer.org/installer >composer-setup.php \
         --install-dir=/usr/local/bin --filename=composer \
     && rm composer-setup.php
 
-WORKDIR /var/www/html/watchpoint-io
+WORKDIR /opt/pickem-releases
