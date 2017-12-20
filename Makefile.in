@@ -14,3 +14,11 @@ build-compose-file:
 	cp -a docker/docker-compose.*.yml .
 	docker-compose $(COMPOSE_FILES) config >docker-compose.yml
 	rm docker-compose.*.yml
+
+release: build-release link-release
+
+build-release:
+	docker-compose run --rm -w /opt/pickem-releases/${VERSION} php-fpm composer install --no-dev
+
+link-release:
+	docker-compose run --rm -w /opt/pickem-releases/ php-fpm ln -sfn ${VERSION} current
