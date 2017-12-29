@@ -6,6 +6,7 @@ services:
     volumes:
       - ./codebase:/opt/pickem-releases
       - ./data/ssl/certs:/etc/ssl/certs/watchpoint
+      - ./data/ssl/letsencrypt/.well-known:/opt/letsencrypt/.well-known
       - ./docker/nginx/watchpoint.conf:/etc/nginx/conf.d/watchpoint.conf
     ports:
       - 80
