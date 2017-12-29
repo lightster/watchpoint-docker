@@ -5,9 +5,11 @@ services:
     restart: always
     volumes:
       - ./codebase:/opt/pickem-releases
+      - ./data/ssl/certs:/etc/ssl/certs/watchpoint
       - ./docker/nginx/watchpoint.conf:/etc/nginx/conf.d/watchpoint.conf
     ports:
       - 80
+      - 443
     depends_on:
       - php-fpm
 
