@@ -7,7 +7,7 @@ services:
       - ./codebase:/opt/pickem-releases
       - ./data/ssl/certs:/etc/ssl/certs/watchpoint
       - ./data/ssl/letsencrypt/.well-known:/opt/letsencrypt/.well-known
-      - ./docker/nginx/watchpoint.conf:/etc/nginx/conf.d/watchpoint.conf
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
     ports:
       - 80
       - 443

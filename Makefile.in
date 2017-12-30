@@ -1,4 +1,4 @@
-install: codebase/pickem codebase-update build-compose-file
+install: codebase/pickem codebase-update build-nginx-conf build-compose-file
 	ln -sfn pickem codebase/current
 	docker-compose build
 	docker-compose up -d
@@ -9,6 +9,9 @@ codebase/pickem:
 
 codebase-update:
 	cd codebase/pickem && git pull
+
+build-nginx-conf:
+	cp docker/nginx/dist/* docker/nginx/conf.d/
 
 build-compose-file:
 	cp -a docker/docker-compose.*.yml .
