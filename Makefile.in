@@ -1,8 +1,12 @@
-install: codebase/pickem codebase-update build-nginx-conf build-compose-file
-	ln -sfn pickem codebase/current
+install: ${INSTALL_TARGET}
+
+install-docker: build-compose-file
 	docker-compose build
 	docker-compose up -d
-	docker-compose run --rm -w /opt/pickem-releases/current php-fpm composer install
+
+install-dev: codebase/pickem codebase-update build-nginx-conf install-docker release .install-db run-migrations
+
+install-pier: install-dev
 
 codebase/pickem:
 	git clone git@github.com:lightster/watchpoint-pickem.git codebase/pickem
