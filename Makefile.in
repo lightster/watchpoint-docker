@@ -4,7 +4,7 @@ install-docker: build-compose-file
 	docker-compose build
 	docker-compose up -d
 
-install-dev: codebase/pickem codebase-update build-nginx-conf install-docker release .install-db run-migrations
+install-dev: codebase/pickem codebase-update build-nginx-conf install-docker release
 
 install-pier: install-dev
 
