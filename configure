@@ -12,6 +12,8 @@ case "$1" in
             docker-compose.web.yml
             docker-compose.pier.yml
         )
+        INSTALL_TARGET="install-pier"
+        VERSION="pickem"
         ;;
 
     docker-dev)
@@ -19,6 +21,8 @@ case "$1" in
             docker-compose.dev-ssl.yml
             docker-compose.web.yml
         )
+        INSTALL_TARGET="install-dev"
+        VERSION="pickem"
         ;;
 
     docker-prod)
@@ -26,6 +30,8 @@ case "$1" in
             docker-compose.web.yml
             docker-compose.production.yml
         )
+        INSTALL_TARGET="install-docker"
+        VERSION=""
         ;;
 
     *)
@@ -35,6 +41,8 @@ esac
 
 cat >Makefile <<ENV_VARS
 COMPOSE_FILES=$(printf ' -f %s' "${COMPOSE_FILES[@]}")
+INSTALL_TARGET=${INSTALL_TARGET}
+VERSION=${VERSION}
 
 ENV_VARS
 
