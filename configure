@@ -8,6 +8,7 @@ COMPOSE_FILES=()
 case "$1" in
     pier)
         COMPOSE_FILES=(
+            docker-compose.dev-ssl.yml
             docker-compose.web.yml
             docker-compose.pier.yml
         )
@@ -15,6 +16,7 @@ case "$1" in
 
     docker-dev)
         COMPOSE_FILES=(
+            docker-compose.dev-ssl.yml
             docker-compose.web.yml
         )
         ;;
