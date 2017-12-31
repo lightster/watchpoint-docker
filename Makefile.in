@@ -19,11 +19,11 @@ install-dev: codebase/pickem codebase-update build-nginx-conf install-docker rel
 install-pier: install-dev
 
 .install-db:
-	docker-compose run --rm -w /opt/pickem-releases/current php-fpm bin/wpt migrate:setup
+	docker-compose run --rm -w /opt/pickem-releases/${VERSION} php-fpm bin/wpt migrate:setup
 	touch .install-db
 
 run-migrations: .install-db
-	docker-compose run --rm -w /opt/pickem-releases/current php-fpm bin/wpt migrate
+	docker-compose run --rm -w /opt/pickem-releases/${VERSION} php-fpm bin/wpt migrate
 
 codebase/pickem:
 	git clone git@github.com:lightster/watchpoint-pickem.git codebase/pickem
