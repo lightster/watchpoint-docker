@@ -20,8 +20,8 @@ case "$1" in
         ;;
 
     docker-dev)
-        if [ $# -ne 4 ]; then
-            echo "Usage: $0 docker-dev bnet_api_key bnet_api_secret"
+        if [ $# -ne 3 ]; then
+            echo "Usage: $0 docker-dev <bnet-api-key> <bnet-api-secret>"
             exit 1
         fi
 
