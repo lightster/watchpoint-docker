@@ -1,3 +1,6 @@
+/.env
+/.install-db
+/.pier.overrides.yaml
 /codebase
 /Makefile
 /docker-compose.yml

@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  postgres:
+    image: postgres:10.1-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      PGDATA: /var/lib/postgresql/data/pgdata

@@ -10,19 +10,30 @@ case "$1" in
         COMPOSE_FILES=(
             docker-compose.dev-ssl.yml
             docker-compose.web.yml
+            docker-compose.postgres.yml
             docker-compose.pier.yml
         )
         INSTALL_TARGET="install-pier"
         VERSION="pickem"
+        BNET_API_KEY=$(moor config get watchpoint.pickem.bnet_api_key)
+        BNET_API_SECRET=$(moor config get watchpoint.pickem.bnet_api_secret)
         ;;
 
     docker-dev)
+        if [ $# -ne 4 ]; then
+            echo "Usage: $0 docker-dev bnet_api_key bnet_api_secret"
+            exit 1
+        fi
+
         COMPOSE_FILES=(
             docker-compose.dev-ssl.yml
             docker-compose.web.yml
+            docker-compose.postgres.yml
         )
         INSTALL_TARGET="install-dev"
         VERSION="pickem"
+        BNET_API_KEY="${2}"
+        BNET_API_SECRET="${3}"
         ;;
 
     docker-prod)
@@ -32,6 +43,8 @@ case "$1" in
         )
         INSTALL_TARGET="install-docker"
         VERSION=""
+        BNET_API_KEY=""
+        BNET_API_SECRET=""
         ;;
 
     *)
@@ -43,6 +56,8 @@ cat >Makefile <<ENV_VARS
 COMPOSE_FILES=$(printf ' -f %s' "${COMPOSE_FILES[@]}")
 INSTALL_TARGET=${INSTALL_TARGET}
 VERSION=${VERSION}
+BNET_API_KEY=${BNET_API_KEY}
+BNET_API_SECRET=${BNET_API_SECRET}
 
 ENV_VARS
 
