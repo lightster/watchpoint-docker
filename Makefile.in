@@ -13,7 +13,7 @@ install-docker: build-compose-file
 	docker-compose build
 	docker-compose up -d
 
-install-dev: codebase/pickem codebase-update build-nginx-conf install-docker link-release run-migrations
+install-dev: codebase/pickem codebase-update build-nginx-conf install-docker release run-migrations
 
 install-pier: install-dev
 
