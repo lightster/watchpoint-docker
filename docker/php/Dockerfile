@@ -8,9 +8,11 @@ RUN apk add --no-cache --virtual '.lightster-phpize-deps' \
         $PHPIZE_DEPS \
     && apk add --no-cache \
         git \
+        postgresql-dev \
         zlib-dev \
     && docker-php-ext-install \
         bcmath \
+        pgsql \
         zip \
     && apk del --no-cache .lightster-phpize-deps
 

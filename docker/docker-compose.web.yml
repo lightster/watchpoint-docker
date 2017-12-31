@@ -23,3 +23,7 @@ services:
       - ./codebase:/opt/pickem-releases
     ports:
       - 9000
+    environment:
+      DB_URL: "${DB_URL}"
+      BNET_API_KEY: "${BNET_API_KEY}"
+      BNET_API_SECRET: "${BNET_API_SECRET}"
