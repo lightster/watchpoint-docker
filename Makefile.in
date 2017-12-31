@@ -1,9 +1,10 @@
 define ENV_CONTENT
-DB_URL=postgres://watchpoint:watchpoint@postgres:5432/watchpoint?application_name=watchpoint-app
+DB_URL=postgres://watchpoint:watchpoint@postgres:5432/dev_watchpoint?application_name=watchpoint-app
 BNET_API_KEY=$(BNET_API_KEY)
 BNET_API_SECRET=$(BNET_API_SECRET)
 POSTGRES_USER=watchpoint
 POSTGRES_PASSWORD=watchpoint
+POSTGRES_DB=dev_watchpoint
 endef
 export ENV_CONTENT
 
