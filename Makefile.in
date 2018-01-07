@@ -11,8 +11,11 @@ export ENV_CONTENT
 install: ${INSTALL_TARGET}
 
 install-docker: build-compose-file
+	cp docker/php/dist/timezone.ini docker/php/conf.d/
 	docker-compose build
 	docker-compose up -d
+
+install-production: build-php-prod-conf install-docker
 
 install-dev: codebase/pickem codebase-update build-nginx-conf install-docker release run-migrations
 
@@ -31,6 +34,9 @@ codebase/pickem:
 codebase-update:
 	@echo "$$ENV_CONTENT" >.env
 	cd codebase/pickem && git pull
+
+build-php-prod-conf:
+	cp docker/php/dist/production.ini docker/php/conf.d/
 
 build-nginx-conf:
 	cp docker/nginx/dist/* docker/nginx/conf.d/

@@ -21,6 +21,7 @@ services:
     restart: always
     volumes:
       - ./codebase:/opt/pickem-releases
+      - ./docker/php/conf.d:/usr/local/etc/php/conf.d/from-host
     ports:
       - 9000
     environment:

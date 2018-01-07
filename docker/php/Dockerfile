@@ -21,4 +21,8 @@ RUN curl -sS https://getcomposer.org/installer >composer-setup.php \
         --install-dir=/usr/local/bin --filename=composer \
     && rm composer-setup.php
 
+VOLUME /usr/local/etc/php/conf.d/from-host
+
+ENV PHP_INI_SCAN_DIR=:/usr/local/etc/php/conf.d/from-host
+
 WORKDIR /opt/pickem-releases
