@@ -41,7 +41,7 @@ case "$1" in
             docker-compose.web.yml
             docker-compose.production.yml
         )
-        INSTALL_TARGET="install-docker"
+        INSTALL_TARGET="install-prod"
         VERSION=""
         BNET_API_KEY=""
         BNET_API_SECRET=""
