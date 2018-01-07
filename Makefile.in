@@ -15,7 +15,7 @@ install-docker: build-compose-file
 	docker-compose build
 	docker-compose up -d
 
-install-prod: build-php-prod-conf install-docker
+install-production: build-php-prod-conf install-docker
 
 install-dev: codebase/pickem codebase-update build-nginx-conf install-docker release run-migrations
 
