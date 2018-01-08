@@ -5,8 +5,12 @@ BNET_API_SECRET=$(BNET_API_SECRET)
 POSTGRES_USER=watchpoint
 POSTGRES_PASSWORD=watchpoint
 POSTGRES_DB=dev_watchpoint
+HOST_UID=$(shell id -u)
+HOST_GID=$(shell id -g)
 endef
 export ENV_CONTENT
+
+DATE=$(shell date +%F)
 
 install: ${INSTALL_TARGET}
 
@@ -53,3 +57,10 @@ build-release:
 
 link-release:
 	docker-compose run --rm -w /opt/pickem-releases/ php-fpm ln -sfn ${VERSION} current
+
+dump-db:
+	mkdir -p data/postgres/snapshots/${DATE}
+	docker-compose exec postgres sh -c \
+		'pg_dump -U "$$POSTGRES_USER" -F c \
+		-f /tmp/pg-snapshots/${DATE}/$$POSTGRES_DB.pgc \
+		"$$POSTGRES_DB"'
