@@ -3,6 +3,8 @@ services:
   postgres:
     image: postgres:10.1-alpine
     restart: always
+    volumes:
+      - ./data/postgres/snapshots:/tmp/pg-snapshots
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
