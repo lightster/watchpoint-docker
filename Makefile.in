@@ -59,8 +59,8 @@ link-release:
 	docker-compose run --rm -w /opt/pickem-releases/ php-fpm ln -sfn ${VERSION} current
 
 dump-db:
-	mkdir -p data/postgres/snapshots/$(DATE)
+	mkdir -p data/postgres/snapshots/${DATE}
 	docker-compose exec postgres sh -c \
 		'pg_dump -U "$$POSTGRES_USER" -F c \
-		-f /tmp/pg-snapshots/$$(date +%F)/$$POSTGRES_DB.pgc \
+		-f /tmp/pg-snapshots/${DATE}/$$POSTGRES_DB.pgc \
 		"$$POSTGRES_DB"'
