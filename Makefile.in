@@ -5,6 +5,8 @@ BNET_API_SECRET=$(BNET_API_SECRET)
 POSTGRES_USER=watchpoint
 POSTGRES_PASSWORD=watchpoint
 POSTGRES_DB=dev_watchpoint
+HOST_UID=$(shell id -u)
+HOST_GID=$(shell id -g)
 endef
 export ENV_CONTENT
 
