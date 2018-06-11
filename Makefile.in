@@ -69,15 +69,3 @@ dump-db:
 		'pg_dump -U "$$POSTGRES_USER" -F c \
 		-f /tmp/pg-snapshots/${DATE}/$$POSTGRES_DB.pgc \
 		"$$POSTGRES_DB"'
-
-dump-db:
-	mkdir -p data/postgres/snapshots/${DATE}
-	# `docker-compose exec` throws an exception after running a command if
-	# `docker-compose` is ran via a cron. A workaround is to run the command via
-	# `docker exec` instead.
-	#
-	# https://github.com/docker/compose/issues/3352
-	docker exec -i $$(docker-compose ps -q postgres) sh -c \
-		'pg_dump -U "$$POSTGRES_USER" -F c \
-		-f /tmp/pg-snapshots/${DATE}/$$POSTGRES_DB.pgc \
-		"$$POSTGRES_DB"'
